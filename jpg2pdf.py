@@ -11,7 +11,7 @@ def psd2pdf(image_dir: str) -> None:
     files = [file for file in files if file[-5:] in ['.jpeg', '.JPEG'] or file[-4:] in ['.jpg', '.JPG']]
     bases = {''.join(filter(str.isalpha, file.split('.')[0])) for file in files}
     for base in bases:
-        out_file = base + '.pdf'
+        out_file = os.path.join(image_dir, base + '.pdf')
         b_files = [file for file in files if base in file]
         images = [(''.join(filter(str.isdigit, file)), os.path.join(image_dir, file)) for file in b_files]
         images.sort()
