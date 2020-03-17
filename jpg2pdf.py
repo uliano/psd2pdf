@@ -15,7 +15,6 @@ def psd2pdf(image_dir: str) -> None:
         b_files = [file for file in files if base in file]
         images = [(''.join(filter(str.isdigit, file)), os.path.join(image_dir, file)) for file in b_files]
         images.sort()
-        print(images)
         images = [Image.open(image[1]).convert('RGB') for image in images]
         images[0].save(out_file, save_all=True, quality=90, append_images=images[1:])
 
